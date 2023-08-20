@@ -1,77 +1,195 @@
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audio Player with Multiple Playlists</title>
-  <link rel="stylesheet" href="css/style.css">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="textonome" content="text based audio player built with html5 css3 and javascript">
+  <meta name="author" content="ahmed noor">
+	<title>Audio Player</title>
+	<link rel="stylesheet" href="css/style.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </head>
 
 <body>
-  <div class="container">
-    <div class="header">
-      <p class="monogram">// -- textonome</p>
-      <p id="changeTheme">[SWITCH-THEME]</p>
-    </div>
-    <br>
-    <h3 class="currentlyPlaying"> Playing naw:</h3>
-		 <div id="track-title">
-        <input type="text" id="song_singer" placeholder="Исполнитель">
-        <input type="text" id="song_name" placeholder="Название песни">
-    </div>
-    <h2 id="currentTitle">-</h2>
+	<div class="header">
+	<div class="title-logo">RadIo On</div>
+	<p id="changeTheme">[SWITCH-THEME]</p>
+</div>
+	<!-- CONTROL -->
+<div class="container">
 
-    <p class="text-controls">
-      <span id="playPauseBtn" class="txt-btn">[PLAY]</span>
-      <span id="volMinusBtn" class="txt-btn">[V-5%]</span>
-      <span id="volPlusBtn" class="txt-btn">[V+5%]</span>
-      <br>
-      <br>
-      <span>Volume:</span>
-      <span id="volIndicator">-</span>
- <span>Time:</span>
-      <span id="currentDuration">-</span> 
-      <span>|</span>
-<span id="totalDuration">-</span> 
-    </p>
-    <br>
-		 <pre id="progressBar">[----------]</pre>
-    <input id="trackProgressBar" type="range" min="0" value="0">
-    <br>
-    <audio id="audioPlayer" src="" autoplay="false" preload="auto" controls="true" contenteditable="true"></audio>
+<div class="control">
+	<div id="text-controls">
+		<span id="playBtn" class="txt-btn">Play</span>
+		<span id="pauseBtn" class="txt-btn">Pause</span>
+		<span id="stopBtn" class="txt-btn">Stop</span>
+	</div>
+	<div id="volumeControl">
+		<input type="range" id="volumeRange" min="0" max="1" step="0.1" value="1">
+	</div>
+</div>
+<div class="Audio-Title">
+	<div class="Audio_title-Station">Statiuon Now:</div>
+	<div id="currentTitle"></div>
+	<div class="Audio-Title-Play">Play Now:</div>
+	<audio id="audioPlayer" controls src="" autoplay="false" preload="auto" controls="true" contenteditable="true"></audio>
 
-    <div class="playlist-container">
-      <div class="playlist">
-        <h3 class="listHeading">MORE.FM</h3>
-        <a href="https://cast.more.fm/more256?nc=0.43325213207873314" data-title="More_mf">More_mf</a>
-        <a href="https://cast.more.fm/rnb" data-title="Nebula-Sample-Astronaut-Ape">More RnB</a>
-				 <a href="https://cast.more.fm/rock" data-title="Nebula-Sample-Astronaut-Ape">More Rock</a>
-				 <a href="https://cast.more.fm/acoustic" data-title="Nebula-Sample-Astronaut-Ape">More acoustic</a>
-				 <a href="https://cast.more.fm/classic" data-title="Nebula-Sample-Astronaut-Ape">More classic</a>
-				 <a href="https://cast.more.fm/music" data-title="Nebula-Sample-Astronaut-Ape">More music</a>
-						 <a href="https://cast.more.fm/lounge" data-title="Nebula-Sample-Astronaut-Ape">More lounge</a>
-						 <a href="https://cast.more.fm/jazz" data-title="Nebula-Sample-Astronaut-Ape">More jazz</a>
-						 <a href="https://cast.more.fm/oe" data-title="Nebula-Sample-Astronaut-Ape">More oe</a>
-						 <a href="https://cast.more.fm/depeche" data-title="Nebula-Sample-Astronaut-Ape">More depeche</a>
-        <!-- Add more tracks for Playlist 1 here -->
-      </div>
+</div>
 
-      <div class="playlist">
-        <h3 class="listHeading">Playlist 2:</h3>
-        <a href="http://datashat.net/music_for_programming_30-matt_kruse.mp3" data-title="music_for_programming_30-matt_kruse">music_for_programming_30-matt_kruse</a>
-        <a href="https://raw.githubusercontent.com/ahmednooor/textonome/master/media/iphoneRingtone.mp3" data-title="iPhone-Ringtone">iPhone-Ringtone</a>
-        <!-- Add more tracks for Playlist 2 here -->
-      </div>
 
-      <!-- Add more playlists with different class names if needed -->
-			      <div class="playlist">
-        <h3 class="listHeading">Playlist 1:</h3>
-        <a href="https://cast.more.fm/more256?nc=0.43325213207873314" data-title="More_mf">More_mf</a>
-        <a href="https://geo-samples.beatport.com/lofi/8274723.LOFI.mp3" data-title="Nebula-Sample-Astronaut-Ape">Nebula-Sample-Astronaut-Ape</a>
-        <!-- Add more tracks for Playlist 1 here -->
-      </div>
-    </div>
-  </div>
-  <script src="script.js"></script>
+	<!-- PlayList -->
+
+<div class="playList-container">
+	<div id="playlist">
+		<h2>More FM</h2>
+		<ul>
+			<li>
+				<a href="https://cast.more.fm/more256" data-title="More_mf">More_mf</a>
+			</li>
+			<li>
+				<a href="https://cast.more.fm/rnb" data-title="Nebula-Sample-Astronaut-Ape">More RnB</a>
+			</li>
+			<li>
+				<a href="https://cast.more.fm/rock" data-title="Nebula-Sample-Astronaut-Ape">More Rock</a>
+			</li>
+			<li>
+				<a href="https://cast.more.fm/acoustic" data-title="Nebula-Sample-Astronaut-Ape">More acoustic</a>
+			</li>
+			<li>
+				<a href="https://cast.more.fm/classic" data-title="Nebula-Sample-Astronaut-Ape">More classic</a>
+			</li>
+			<li>
+				<a href="https://cast.more.fm/music" data-title="Nebula-Sample-Astronaut-Ape">More music</a>
+			</li>
+			<li>
+				<a href="https://cast.more.fm/lounge" data-title="Nebula-Sample-Astronaut-Ape">More lounge</a>
+			</li>
+			<li>
+				<a href="https://cast.more.fm/jazz" data-title="Nebula-Sample-Astronaut-Ape">More jazz</a>
+			</li>
+			<li>
+				<a href="https://cast.more.fm/oe" data-title="Nebula-Sample-Astronaut-Ape">More oe</a>
+			</li>
+			<li>
+				<a href="https://cast.more.fm/depeche" data-title="Nebula-Sample-Astronaut-Ape">More depeche</a>
+			</li>
+		</ul>
+	</div>
+
+<div id="playlist">
+	<h2>Ukreine FM [Hit-FM]</h2>
+	<ul>
+		<li>
+			<a href="https://online.hitfm.ua/HitFM_HD" data-title="Hit-FM">Hit-FM</a>
+		</li>
+		<li>
+			<a href="https://online.radioroks.ua/RadioROKS_HD" data-title="RadioROKS">RadioROKS</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/rock" data-title="Nebula-Sample-Astronaut-Ape">More Rock</a>
+		</li>
+		<li>
+			<a href="https://online.kissfm.ua/KissFM_HD" data-title="KissFM">KissFM</a>
+		</li>
+		<li>
+			<a href="https://online.melodiafm.ua/MelodiaFM_HD" data-title="MelodiaFM">MelodiaFM</a>
+		</li>
+		<li>
+			<a href="https://online.radiorelax.ua/RadioRelax_HD" data-title="RadioRelax">RadioRelax</a>
+		</li>
+		<li>
+			<a href="https://online.radioplayer.ua/RadioGold_HD" data-title="RadioGold">RadioGold</a>
+		</li>
+		<li>
+			<a href="https://online.radiobayraktar.ua/RadioBayraktar_HD" data-title="RadioBayraktar">RadioBayraktar</a>
+		</li>
+		<li>
+			<a href="https://online.radioplayer.ua/FlashRadio_HD" data-title="FlashRadio">FlashRadio</a>
+		</li>
+		<li>
+			<a href="
+			https://online.radioplayer.ua/RadioIndieUA_HD" data-title="RadioIndieUA">RadioIndieUA</a>
+		</li>
+	</ul>
+</div>
+<div id="playlist">
+	<h2>Ukreine Mix</h2>
+	<ul>
+		<li>
+			<a href="https://cast.more.fm/more256" data-title="More_mf">Lux fm</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/rnb" data-title="Nebula-Sample-Astronaut-Ape">More RnB</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/rock" data-title="Nebula-Sample-Astronaut-Ape">More Rock</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/acoustic" data-title="Nebula-Sample-Astronaut-Ape">More acoustic</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/classic" data-title="Nebula-Sample-Astronaut-Ape">More classic</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/music" data-title="Nebula-Sample-Astronaut-Ape">More music</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/lounge" data-title="Nebula-Sample-Astronaut-Ape">More lounge</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/jazz" data-title="Nebula-Sample-Astronaut-Ape">More jazz</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/oe" data-title="Nebula-Sample-Astronaut-Ape">More oe</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/depeche" data-title="Nebula-Sample-Astronaut-Ape">More depeche</a>
+		</li>
+	</ul>
+</div>
+
+<div id="playlist">
+	<h2>Playlist 1</h2>
+	<ul>
+		<li>
+			<a href="https://cast.more.fm/more256" data-title="More_mf">More_mf</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/rnb" data-title="Nebula-Sample-Astronaut-Ape">More RnB</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/rock" data-title="Nebula-Sample-Astronaut-Ape">More Rock</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/acoustic" data-title="Nebula-Sample-Astronaut-Ape">More acoustic</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/classic" data-title="Nebula-Sample-Astronaut-Ape">More classic</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/music" data-title="Nebula-Sample-Astronaut-Ape">More music</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/lounge" data-title="Nebula-Sample-Astronaut-Ape">More lounge</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/jazz" data-title="Nebula-Sample-Astronaut-Ape">More jazz</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/oe" data-title="Nebula-Sample-Astronaut-Ape">More oe</a>
+		</li>
+		<li>
+			<a href="https://cast.more.fm/depeche" data-title="Nebula-Sample-Astronaut-Ape">More depeche</a>
+		</li>
+	</ul>
+</div>
+
+</div>
+</div>
+</div>
+
+	<script src="js/main.js"></script>
 </body>
 
+</html>

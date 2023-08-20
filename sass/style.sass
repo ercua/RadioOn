@@ -4,17 +4,25 @@ $w: #eceff4
 $base-bg: #2e3440
 
 body
-	background: #000
-	font-family: "Consolas", 'Roboto Mono'
+	font-family: 'Anonymous Pro', monospace
 	margin: 0 auto
 	background-color: $base-bg
 	overflow-y: scroll
 	color: $w
+html
+	font-size: 18PX
+
+
+
+.title-logo
+	font-family: 'Tripleled ST', sans-serif
+	font-size: 30px
+	margin: 40px
 
 .container
-	max-width: 600px
-	margin: 0 auto
+	max-width: 480px
 	padding: 20px
+	margin: 0 auto
 
 .header
 	text-align: center
@@ -46,59 +54,73 @@ body
 
 // .text-controls
 //   text-align: center
-
+.control
+	display: flex
+	justify-content: space-between
 .text-controls
-	-webkit-user-select: none
-	-moz-user-select: none
-	-ms-user-select: none
 	user-select: none
 	cursor: default
-
 	span
 		color: $w
 		font-size: 0.9rem
 		padding: 1px 0
 
-		&.txt-btn:hover
-			color: #d8dee9
-			cursor: pointer
-
 .txt-btn
-	cursor: pointer
-	color: #007BFF
+	&::before
+		content: '['
+	&::after
+		content: ']'
+	&:hover
+		cursor: pointer
+		&::before
+			content: '['
+		&::after
+			content: ']'
 
+	
+.Audio-Title
+	margin-top: 20px
 #currentTitle
 	margin: 10px auto
-	margin-top: 6px
-	color: white
 	font-size: 1.5rem
 	max-width: 100%
-	word-wrap: break-word
-	word-break: normal
 
 audio#audioPlayer
 	width: 100%
 	display: none
 
-.playlist
+.playList-container
+	display: grid
+	grid-template-columns: repeat(2, 1fr)
+	justify-items: start
+	margin: 20px o
+
+#playlist
+	display: inline-block
 	margin-top: 80px
-	border: 1px solid #e5e9f0
-	h3
+
+	h2
 		display: block
 		font-size: 1rem
 		margin: 10px auto
-
+		&:before
+			content: '['
+		&:after
+			content: ']'
 	a
 		display: block
 		font-size: 1rem
 		margin: 10px auto
 		color: white
 		text-decoration: none
-		&:hover
-			color: #d8dee9
 		&:focus
-			color: white
-			text-decoration: none
+			&:before
+					content: '♫ '
+		&:hover
+			&:before
+				content: '♫ '
+				color: #d8dee9
+	
 
 // &.activeTrack
 //  background-color: white
@@ -115,91 +137,6 @@ input[type=range]#trackProgressBar
 	&:focus
 		outline: none
 		border: none
-
-	&::-webkit-slider-runnable-track
-		width: 100%
-		height: 2px
-		cursor: pointer
-		animate: 0.2s
-		box-shadow: none
-		background: white
-		border-radius: 1.3px
-		border: 10px solid white
-		border-right: none
-		border-left: none
-
-	&::-webkit-slider-thumb
-		box-shadow: none
-		border: none
-		height: 20px
-		width: 10px
-		border-radius: 0px
-		background: gray
-		cursor: pointer
-		-webkit-appearance: none
-		margin-top: -10px
-
-	&:focus::-webkit-slider-runnable-track
-		background: white
-
-	&::-moz-range-track
-		width: 100%
-		height: 0px
-		cursor: pointer
-		animate: 0.2s
-		box-shadow: none
-		background: white
-		border-radius: 1.3px
-		border: 10px solid white
-		border-right: none
-		border-left: none
-
-	&::-moz-range-thumb
-		box-shadow: none
-		border: none
-		height: 20px
-		width: 10px
-		border-radius: 0px
-		background: gray
-		cursor: pointer
-		-webkit-appearance: none
-		margin-top: -10px
-
-	&::-ms-track
-		width: 100%
-		height: 0px
-		cursor: pointer
-		animate: 0.2s
-		background: white
-		border-color: white
-		border-width: 10px 0
-		color: transparent
-
-	&::-ms-fill-lower, &::-ms-fill-upper
-		background: white
-		border: none
-		border-radius: 0px
-		box-shadow: none
-
-	&::-ms-thumb
-		box-shadow: none
-		border: none
-		height: 20px
-		width: 10px
-		border-radius: 0px
-		background: gray
-		cursor: pointer
-		margin-top: 0px
-
 	&:focus
 		&::-ms-fill-lower, &::-ms-fill-upper
 			background: white
-
-#progressBar
-	background-color: #00cc00
-	color: #fff
-	margin: 0
-	padding: 2px
-
-#trackProgressBar, #audioPlayer
-	width: 100%
