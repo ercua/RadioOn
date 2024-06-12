@@ -12,9 +12,7 @@ body
 html
 	font-size: 18PX
 
-
-
-.title-logo
+.title-log
 	font-family: 'Tripleled ST', sans-serif
 	font-size: 30px
 	margin: 40px
@@ -77,13 +75,16 @@ html
 		&::after
 			content: ']'
 
-	
 .Audio-Title
 	margin-top: 20px
+
+.Audio_TItle_Station
+	display: flex
+	align-items: center
+
 #currentTitle
-	margin: 10px auto
-	font-size: 1.5rem
-	max-width: 100%
+	margin-left: 15px
+	font-size: 1rem
 
 audio#audioPlayer
 	width: 100%
@@ -115,12 +116,11 @@ audio#audioPlayer
 		text-decoration: none
 		&:focus
 			&:before
-					content: '♫ '
+				content: '♫ '
 		&:hover
 			&:before
 				content: '♫ '
 				color: #d8dee9
-	
 
 // &.activeTrack
 //  background-color: white
